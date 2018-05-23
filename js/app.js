@@ -1,9 +1,9 @@
-(function() {
+(function () {
   'use strict';
 
   const movies = [];
 
-  const renderMovies = function() {
+  const renderMovies = function () {
     $('#listings').empty();
 
     for (const movie of movies) {
@@ -17,7 +17,9 @@
         'data-tooltip': movie.title
       });
 
-      $title.tooltip({ delay: 50 }).text(movie.title);
+      $title.tooltip({
+        delay: 50
+      }).text(movie.title);
 
       const $poster = $('<img>').addClass('poster');
 
@@ -56,5 +58,18 @@
     }
   };
 
-  // ADD YOUR CODE HERE
-})();
+let searchButton = document.getElementById('searchButton');
+let search = document.getElementById('search');
+
+
+searchButton.addEventListener('click', function (e) {
+  if (search.value !== "") {
+  event.preventDefault();
+  fetch('http://www.omdbapi.com/?i=tt3896198&apikey=b4328be9') 
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+}
+});
+
+
+  })();
